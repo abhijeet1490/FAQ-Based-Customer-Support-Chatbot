@@ -14,9 +14,21 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+# from django.contrib import admin
+# from django.urls import path
+
+# urlpatterns = [
+#     path('admin/', admin.site.urls),
+# ]
+
+# backend/urls.py
+
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include # Make sure to import 'include'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # Add this line to include all URLs from our 'api' app
+    # This means our chat endpoint will be at /api/v1/chat/
+    path('api/v1/', include('api.urls')),
 ]
